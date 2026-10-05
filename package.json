@@ -1,0 +1,26 @@
+{
+  "name": "atv01_node_site",
+  "version": "1.0.0",
+  "description": "Atividade 01 utilizando nodeJS",
+  "homepage": "https://github.com/satiado/atv01_node_site#readme",
+  "bugs": {
+    "url": "https://github.com/satiado/atv01_node_site/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satiado/atv01_node_site.git"
+  },
+  "license": "ISC",
+  "author": "Satio Daniel",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon index.js"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}

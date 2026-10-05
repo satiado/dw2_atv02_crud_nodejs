@@ -1,0 +1,71 @@
+<!-- importano o headeder -->
+ <%- include('partials/header') %>
+<!-- importando  navbar -->
+<%- include('partials/navbar') %>
+
+<style>
+    th,td,tr{
+    padding: 15px;
+    }
+        #hs{
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-header{
+        height: 280px;
+    }
+
+
+    
+</style>
+
+ <div class="container">
+            <div class="card">
+                <div class="card-header bg-danger">
+                    <div id="hs">
+                        <h1> Ferrari</h1>
+                        <img src="./images/ferrari.png" width="150px" alt="Logo Equipe Ferrari">
+                    </div>                
+                </div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome:</th>
+                                <th>Função:</th>
+                                <th>Idade:</th>
+                                <th>naturalidade:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% ferrari.forEach(ferrari=> { %>
+                                <tr>
+                                    <td>
+                                        <img src="<%= ferrari.img %>" alt="foto de <%= ferrari.img %>" width="150px">
+                                    </td>
+                                    <td>
+                                        <%= ferrari.nome %>
+                                    </td>
+                                    <td>
+                                        <%= ferrari.funcao %>
+                                    </td>
+                                    <td>
+                                        <%= ferrari.idade %>
+                                    </td>
+                                    <td>
+                                        <%= ferrari.nacionalidade %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+   <!-- importando o footer -->
+<%- include ('partials/footer.ejs') %>

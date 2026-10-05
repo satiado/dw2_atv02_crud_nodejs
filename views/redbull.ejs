@@ -1,0 +1,70 @@
+<!-- importando o headeder -->
+ <%- include('partials/header') %>
+<!-- importando  navbar -->
+<%- include('partials/navbar') %>
+
+<style>
+    th,td,tr{
+    padding: 15px;
+    }
+    #hs{
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-header{
+        height: 280px;
+    }
+
+    
+</style>
+
+ <div class="container">
+            <div class="card">
+                <div class="card-header bg-info">
+                    <div id="hs">
+                        <h1>Red Bull</h1>
+                        <img src="./images/redbull.png" width="150px" alt="Logo Equipe Red Bull">
+                    </div>
+                    
+                </div>
+                <div class="card-body me-5">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome:</th>
+                                <th>Função:</th>
+                                <th>Idade:</th>
+                                <th>Nacionalidade:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% redbull.forEach(redbull=> { %>
+                                <tr>
+                                    <td><img src="<%= redbull.img %>" alt="foto de <%= redbull.img %>" width="150px"></td>
+                                    <td>
+                                        <%= redbull.nome %>
+                                    </td>
+                                    <td>
+                                        <%= redbull.funcao %>
+                                    </td>
+                                    <td>
+                                        <%= redbull.idade %>
+                                    </td>
+                                    <td>
+                                        <%= redbull.nacionalidade %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+   <!-- importando o footer -->
+<%- include ('partials/footer.ejs') %>
+

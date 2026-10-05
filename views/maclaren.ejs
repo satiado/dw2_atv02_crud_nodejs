@@ -1,0 +1,69 @@
+<!-- importando o headeder -->
+ <%- include('partials/header') %>
+<!-- importando  navbar -->
+<%- include('partials/navbar') %>
+
+<style>
+    th,td,tr{
+    padding: 15px;
+    }
+    #hs{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    }
+    .card-header{
+        height: 280px;
+    }
+    
+</style>
+
+ <div class="container">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <div id="hs">
+                        <h1>MacLaren</h1>
+                        <img src="./images/maclaren.png" width="150px" alt="Logo Equipe MacLaren">
+                    </div>
+                    
+                </div>
+                <div class="card-body me-5">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome:</th>
+                                <th>Função:</th>
+                                <th>Idade:</th>
+                                <th>Nacionalidade:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% maclaren.forEach(maclaren=> { %>
+                                <tr>
+                                    <td><img src="<%= maclaren.img %>" alt="foto de <%= maclaren.img %>" width="150px"></td>
+                                    <td>
+                                        <%= maclaren.nome %>
+                                    </td>
+                                    <td>
+                                        <%= maclaren.funcao %>
+                                    </td>
+                                    <td>
+                                        <%= maclaren.idade %>
+                                    </td>
+                                    <td>
+                                        <%= maclaren.nacionalidade %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+   <!-- importando o footer -->
+<%- include ('partials/footer.ejs') %>
+
