@@ -21,6 +21,40 @@
 </style>
 
  <div class="container">
+            <div class="card" >
+                <div class="card-header bg-success">
+                    <div id="hs">
+                        <h1>Cadastrar nova pessoa</h1>
+                        <img src="./images/mercedes.png" width="150px" alt="Logo Equipe Mercedes">
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                    <form action="/mercedes/cadastrar" method="POST">
+                        <label for="nome">Nome da pessoa:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Insira o nome da pessoa" class="form-control" required>
+
+                        <label for="funcao">função da pessoa:</label>
+                        <input type="text" id="funcao" name="funcao" placeholder="Insira a função da pessoa" class="form-control" required>
+
+                        <label for="idade">idade da pessoa:</label>
+                        <input type="text" id="idade" name="idade" placeholder="Insira a idade da pessoa" class="form-control" required>
+
+                        <label for="nacionalidade">Nacionalidade da pessoa:</label>
+                        <input type="text" id="nacionalidade" name="nacionalidade" placeholder="Insira a nacionalidade da pessoa" class="form-control" required>
+                        <br>
+                        <!-- Botão de cadastrar -->
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <!-- Botão de limpar -->
+                        <button type="reset" class="btn btn-danger">Limpar</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <br>
+
+ <div class="container">
             <div class="card">
                 <div class="card-header bg-success">
                   
@@ -57,6 +91,9 @@
                                     <td>
                                         <%= mercedes.nacionalidade %>
                                     </td>
+                                     <!-- BOTÃO DE EDITAR -->
+                                     <td><a class="btn btn-warning" href="/mercedes/alterar/<%= mercedes.id %>">Editar</a></td>
+                                     <td><a class="btn btn-danger" href="/mercedes/excluir/<%= mercedes.id %>" onclick="return confirm('Deseja mesmo excluir o cliente <%= mercedes.nome %>')">Excluir</a></td>
                                 </tr>
                                 <% }) %>
                         </tbody>

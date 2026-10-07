@@ -1,14 +1,14 @@
 {
-  "name": "atv01_node_site",
+  "name": "dw2_atv02_crud_nodejs",
   "version": "1.0.0",
-  "description": "Atividade 01 utilizando nodeJS",
-  "homepage": "https://github.com/satiado/atv01_node_site#readme",
+  "description": "Atividade 02 utilizando CRUD no nodeJS",
+  "homepage": "https://github.com/satiado/dw2_atv02_crud_nodejs#readme",
   "bugs": {
-    "url": "https://github.com/satiado/atv01_node_site/issues"
+    "url": "https://github.com/satiado/dw2_atv02_crud_nodejs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/satiado/atv01_node_site.git"
+    "url": "git+https://github.com/satiado/dw2_atv02_crud_nodejs.git"
   },
   "license": "ISC",
   "author": "Satio Daniel",
@@ -21,6 +21,8 @@
   "dependencies": {
     "ejs": "^6.0.1",
     "express": "^5.2.1",
-    "nodemon": "^3.1.14"
+    "mysql2": "^3.24.5",
+    "nodemon": "^3.1.14",
+    "sequelize": "^6.37.8"
   }
 }

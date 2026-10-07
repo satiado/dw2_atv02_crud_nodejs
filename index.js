@@ -1,4 +1,5 @@
 import express from "express"; //importação do express
+import connection from "./config/sequelize-config.js";//importando o seuqlize
 const app = express(); //Iniciando express
 
 import mercedesController from "./controllers/MercedesController.js"; //importando a rota mercedes
@@ -7,8 +8,24 @@ import redbullController from "./controllers/RedbullController.js"; // importand
 import ferrariController from "./controllers/FerrariController.js"; // importando a rota ferrari
 import maclarenController from "./controllers/MaclarenController.js"; // importando a rota maclaren
 
+app.use(express.urlencoded({ extended: false }));// permite dados através de formulários
 app.set("view engine", "ejs"); // ejs renderizando páginas 
 app.use(express.static('public')); //usando pasta public
+
+//conexão com o banco
+connection.authenticate().then(()=> {
+    console.log("Conexão com o banco de dados realizado!");
+}).catch((error)=>{
+    console.log(`Erro ao conectar com o banco. Erro: ${error}`);
+});
+
+//criando tabela
+const db_name = "f1";
+connection.query(`create database if not exists ${db_name}`).then(()=>{
+    console.log("Banco criado com sucesso!");
+}).catch((error)=>{
+    console.log(`Erro ao criar banco. Erro: ${error}`);
+});
 
 app.use("/", mercedesController); //chamando a rota mercedes
 app.use("/", indexController); //chamando a rota index
