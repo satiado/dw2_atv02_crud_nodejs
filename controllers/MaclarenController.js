@@ -1,18 +1,94 @@
 //importando o express
 import express from "express";
+import Maclaren from "../models/Maclaren.js"
 const rota = express.Router();
 
-rota.use("/maclaren", (req,res) => {
-    const maclaren = [
-        {img: "/images/oscar.jpg", nome:"Oscar Piastri", funcao:"Piloto", idade:"25 anos", nacionalidade:"Australiano"},
-        {img: "/images/lando.jpg", nome:"Lando Norris", funcao:"Piloto", idade:"26 anos", nacionalidade:"Britânico"},
-        {img: "/images/leonardo.jpg", nome:"Leonardo Fornaroli", funcao:"Piloto Reserva", idade:"21 anos", nacionalidade:"Italiano"},
-        {img: "/images/pato.jpg", nome:"Pato O'Ward", funcao:"Piloto de Testes", idade:"27 anos", nacionalidade:"Mexicano"},
-        {img: "/images/andrea.jpg", nome:"Andrea Stella", funcao:"Chefe de Equipe", idade:"55 anos", nacionalidade:"Italiano"}
-    ]
-    res.render("maclaren", {
-        maclaren: maclaren
+
+rota.get("/maclaren", (req,res) => {
+    Maclaren.findAll().then((maclaren)=>{
+        res.render("maclaren", {
+        maclaren:maclaren
+        });
+    }).catch((error)=>{
+        console.log(`Ocorreu um erro ao listar os integrantes. Erro: ${error}`);
+    });
+});
+
+//ROTA DE CADASTRO DA MACLAREN
+rota.post("/maclaren/cadastrar", (req, res) => {
+  const nome = req.body.nome;
+  const funcao = req.body.funcao;
+  const idade = req.body.idade;
+  const nacionalidade = req.body.nacionalidade;
+  Maclaren.create({
+    nome: nome,
+    funcao:funcao,
+    idade:idade,
+    nacionalidade:nacionalidade,
+  })
+    .then(() => {
+      res.redirect("/maclaren");
     })
-})
+    .catch((error) => {
+    console.log(`Ocorreu um erro ao cadastrar o integrante. Erro: ${error}`);
+    });
+});    
+
+//ROTA PARA EXCLUIR UM INTEGRANTE
+rota.get("/maclaren/excluir/:id", (req, res) => {
+  const id = req.params.id;
+  Maclaren.destroy({
+    where: {
+      id: id,
+    },
+  })
+    .then(() => {
+      res.redirect("/maclaren");
+    })
+    .catch((error) => {
+      console.log(`Ocorreu um erro ao excluir o cliente. Erro: ${error}`);
+    });
+});
+
+//ROTA DE EDIÇÃO DO INTEGRANTE
+rota.get("/maclaren/editar/:id", (req, res) => {
+  const id = req.params.id;
+  Maclaren.findByPk(id)
+    .then((maclaren) => {
+      res.render("maclarenEditar", {
+       maclaren:maclaren,
+      });
+    })
+    .catch((error) => {
+      console.log(`Ocorreu um erro ao buscar o cliente.Erro: ${error}`);
+    });
+});
+
+//ROTA QUE ALTERA O Integrante NO BANCO DE DADOS
+rota.post("/maclaren/alterar", (req, res) => {
+  const id = req.body.id;
+  const nome = req.body.nome;
+  const funcao = req.body.funcao;
+  const idade = req.body.idade;
+  const nacionalidade = req.body.nacionalidade;
+  Maclaren.update(
+    {
+      nome: nome,
+      funcao: funcao,
+      idade: idade,
+      nacionalidade: nacionalidade,
+    },
+    {
+      where: { id: id },
+    },
+  )
+    .then(() => {
+      res.redirect("/maclaren");
+    })
+    .catch((error) => {
+      console.log(`Ocorreu um erro ao alterar o integrante. Erro: ${error}`);
+    });
+});
+
 
 export default rota;

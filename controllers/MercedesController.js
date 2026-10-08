@@ -12,7 +12,7 @@ rota.get("/mercedes", (req,res) => {
         });
     }).catch((error)=>{
         console.log(`Ocorreu um erro ao listar os integrantes. Erro: ${error}`);
-    });
+    }); 
 });
 
 //ROTA DE CADASTRO DA MERCEDES
@@ -52,7 +52,7 @@ rota.get("/mercedes/excluir/:id", (req, res) => {
 });
 
 //ROTA DE EDIÇÃO DO INTEGRANTE
-rota.get("/mercedes/editar/:id", (req, res) => {
+rota.post("/mercedes/editar/:id", (req, res) => {
   const id = req.params.id;
   Mercedes.findByPk(id)
     .then((mercedes) => {

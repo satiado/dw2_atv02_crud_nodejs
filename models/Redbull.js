@@ -1,7 +1,7 @@
 import connection from "../config/sequelize-config.js";
 import Sequelize  from "sequelize";
 
-const Mercedes = connection.define('mercedes',{
+const Redbull = connection.define('redbull',{
     nome:{
         type:Sequelize.STRING,
         allowNull:false
@@ -20,6 +20,6 @@ const Mercedes = connection.define('mercedes',{
     },
 });
 
-Mercedes.sync({forse:false});
+Redbull.sync({forse:false});
 
-export default Mercedes;
+export default Redbull;
