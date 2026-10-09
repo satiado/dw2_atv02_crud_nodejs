@@ -7,7 +7,7 @@ const rota = express.Router();
 rota.get("/redbull", (req,res) => {
     Redbull.findAll().then((redbull)=>{
         res.render("redbull", {
-        redbull:redbull
+        redbull:redbull,
         });
     }).catch((error)=>{
         console.log(`Ocorreu um erro ao listar os integrantes. Erro: ${error}`);
@@ -83,7 +83,7 @@ rota.post("/redbull/alterar", (req, res) => {
     },
   )
     .then(() => {
-      res.redirect("/maclaren");
+      res.redirect("/redbull");
     })
     .catch((error) => {
       console.log(`Ocorreu um erro ao alterar o integrante. Erro: ${error}`);

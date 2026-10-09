@@ -52,7 +52,7 @@ rota.get("/mercedes/excluir/:id", (req, res) => {
 });
 
 //ROTA DE EDIÇÃO DO INTEGRANTE
-rota.post("/mercedes/editar/:id", (req, res) => {
+rota.get("/mercedes/editar/:id", (req, res) => {
   const id = req.params.id;
   Mercedes.findByPk(id)
     .then((mercedes) => {
@@ -61,7 +61,7 @@ rota.post("/mercedes/editar/:id", (req, res) => {
       });
     })
     .catch((error) => {
-      console.log(`Ocorreu um erro ao buscar o cliente.Erro: ${error}`);
+      console.log(`Ocorreu um erro ao buscar o integrante. Erro: ${error}`);
     });
 });
 
